@@ -63,12 +63,12 @@ namespace ISIPGorlanovWPF
                 total += order.Option.Price;
             }
 
-            txtTotalCost.Text = $"Итого: {total} руб.";
+            txtTotalCost.Text = $"Итого: {total:N2} руб.";
         }
         private void AddResultRow(string name, decimal price)
         {
             TextBlock row = new TextBlock { Margin = new Thickness(0, 5, 0, 5), FontSize = 14 };
-            row.Text = $"{name} — {price} руб.";
+            row.Text = $"{name} — {price:N2} руб.";
             ResultPanel.Children.Add(row);
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
