@@ -11,13 +11,16 @@
     <Grid>
         <TextBlock Text="Шаг 4: Выберите параметры кредита" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
-            <TextBlock Text="Взнос (руб):"/>
-            <TextBox x:Name="txtFee" Margin="0,5"/>
+            <TextBlock Text="Первоначальный взнос (%):"/>
+            <TextBox x:Name="txtFeePercent"/>
 
-            <TextBlock Text="Срок (мес):" Margin="0,10,0,0"/>
-            <TextBox x:Name="txtTerm" Margin="0,5"/>
+            <TextBlock Text="Срок кредита (мес):"/>
+            <DockPanel>
+                <TextBlock x:Name="lblTermValue" Text="{Binding ElementName=sliderTerm, Path=Value}" Width="30" FontWeight="Bold" DockPanel.Dock="Right" TextAlignment="Center"/>
+                <Slider x:Name="sliderTerm" Minimum="12" Maximum="96" TickFrequency="1" IsSnapToTickEnabled="True" Value="12"/>
+            </DockPanel>
 
-            <Button Content="Рассчитать" Click="BtnCalc_Click" Margin="0,15" Height="30"/>
+            <Button Content="Рассчитать" Click="BtnCalc_Click" Margin="20" Height="30"/>
 
             <TextBlock Text="Ежемесячный платеж:"/>
             <TextBlock x:Name="lblResult" Text="0 руб."/>

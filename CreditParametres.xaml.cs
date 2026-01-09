@@ -30,9 +30,11 @@ namespace ISIPGorlanovWPF
             var mw = (MainWindow)Application.Current.MainWindow;
             var cost = mw.CurrentOrder.TotalCost;
 
-            if (decimal.TryParse(txtFee.Text, out decimal fee) && int.TryParse(txtTerm.Text, out int months))
+            if (decimal.TryParse(txtFeePercent.Text, out decimal percent) && Convert.ToBoolean((int)sliderTerm.Value))
             {
                 //decimal initialFee, int termInMonths, decimal carCost, decimal yearStavka)
+                decimal fee = (cost * percent) / 100;
+                int months = (int)sliderTerm.Value;
                 mw.Credit = new Credit(fee, months, cost, 15.0m);
                 lblResult.Text = $"{mw.Credit.MonthlyPayment:N2} руб.";
             }
