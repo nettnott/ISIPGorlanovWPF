@@ -31,5 +31,18 @@ namespace ISIPGorlanovWPF
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.StepProgress.Value = 4;
         }
+        private void btnFinish_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите отправить заявку и выйти?",
+                                                      "Подтверждение",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                MessageBox.Show("Данные сохранены! Мы оформили на вас кредит, остальное нет, сорян, надо было читать выдуманный мелкий шрифт");
+                Application.Current.Shutdown();
+            }
+        }
     }
 }

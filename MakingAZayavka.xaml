@@ -11,6 +11,6 @@
     <Grid>
         <TextBlock Text="Шаг 5: Оставьте заявку" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
         <Button Content="Назад" Click="GoBack_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Width="100"/>
-
+        <Button Content="Завершить и выйти" Click="btnFinish_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="150"/>
     </Grid>
 </Page>

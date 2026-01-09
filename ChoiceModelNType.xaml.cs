@@ -27,6 +27,12 @@ namespace ISIPGorlanovWPF
         
     private void GoNext_Click(object sender, RoutedEventArgs e)
         {
+            var mw = (MainWindow)Application.Current.MainWindow;
+
+            // 2. Сохраняем данные (допустим, из TextBox или ComboBox)
+            mw.CurrentOrder.Model = txtModel.Text;
+            mw.CurrentOrder.Engine = comboEngine.Text;
+
             this.NavigationService.Navigate(new ChoiceColorEtc());
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
