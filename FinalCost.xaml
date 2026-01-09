@@ -8,10 +8,21 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FinalCost">
 
-    <Grid>
-        <TextBlock Text="Шаг 3: Проеврьте все ли верно" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
-        <Button Content="Далее" Click="GoNext_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="100"/>
-        <Button Content="Назад" Click="GoBack_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Width="100"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Шаг 3: Ваша конфигурация" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
+        <StackPanel Grid.Row="1" x:Name="ResultPanel">
+        </StackPanel>
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0,1,0,0" Margin="0,10">
+            <TextBlock x:Name="txtTotalCost" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10"/>
+        </Border>
+        <Button Grid.Row="3" Content="Далее" Click="GoNext_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="100"/>
+        <Button Grid.Row="3" Content="Назад" Click="GoBack_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Width="100"/>
 
     </Grid>
 </Page>
