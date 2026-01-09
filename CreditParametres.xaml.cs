@@ -25,6 +25,22 @@ namespace ISIPGorlanovWPF
             InitializeComponent();
             this.KeepAlive = true;
         }
+        private void BtnCalc_Click(object sender, RoutedEventArgs e)
+        {
+            var mw = (MainWindow)Application.Current.MainWindow;
+            var cost = mw.CurrentOrder.TotalCost;
+
+            if (decimal.TryParse(txtFee.Text, out decimal fee) && int.TryParse(txtTerm.Text, out int months))
+            {
+                //decimal initialFee, int termInMonths, decimal carCost, decimal yearStavka)
+                mw.Credit = new Credit(fee, months, cost, 15.0m);
+                lblResult.Text = $"{mw.Credit.MonthlyPayment:N2} руб.";
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные числа");
+            }
+        }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MakingAZayavka());

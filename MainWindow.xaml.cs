@@ -23,6 +23,8 @@ namespace ISIPGorlanovWPF
         public List<Engines> EnginesList { get; set; } = new List<Engines> ();
         public List<Colors> ColorsList { get; set; } = new List<Colors>();
         public List<Options> OptionsList { get; set; } = new List<Options>();
+        public Credit Credit { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -59,8 +61,9 @@ namespace ISIPGorlanovWPF
         public Engines SelectedEngine { get; set; }
         public Colors Color { get; set; }
         public Options Option { get; set; }
-        public Credit CreditDetails { get; set; }
+        public Credit CreditData { get; set; }
         public string Contacts { get; set; }
+        public decimal TotalCost { get; set; }
     }
 
     public class Models
@@ -101,13 +104,13 @@ namespace ISIPGorlanovWPF
 
     public class Credit
     {
-        public decimal InitialFee; //первоначальный взнос
-        public int TermInMonths; //срок кредита в месяцах
-        public decimal CarCost; //общая стоимость машины
-        public decimal MonthlyPayment; //ежемесячный платеж
-        public decimal TotalPayment; //общая сумма выплат по кредиту
-        public decimal MonthlyStavka; //ежемесячная ставка
-        public decimal YearStavka; //годовая ставка по кредиту
+        public decimal InitialFee { get; set; } //первоначальный взнос
+        public int TermInMonths { get; set; } //срок кредита в месяцах
+        public decimal CarCost { get; set; } //общая стоимость машины
+        public decimal MonthlyPayment { get; set; } //ежемесячный платеж
+        public decimal TotalPayment { get; set; } //общая сумма выплат по кредиту
+        public decimal MonthlyStavka { get; set; } //ежемесячная ставка
+        public decimal YearStavka { get; set; } //годовая ставка по кредиту
 
         public Credit(decimal initialFee, int termInMonths, decimal carCost, decimal yearStavka)
         {

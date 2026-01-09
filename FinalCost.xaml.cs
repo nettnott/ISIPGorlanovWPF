@@ -33,41 +33,41 @@ namespace ISIPGorlanovWPF
 
             ResultPanel.Children.Clear();
 
-            decimal total = 0;
+            order.TotalCost = 0m;
 
             // модель
             if (order.SelectedModel != null)
             {
                 AddResultRow($"Автомобиль: {order.SelectedModel.Name}", order.SelectedModel.BasePrice);
-                total += order.SelectedModel.BasePrice;
+                order.TotalCost += order.SelectedModel.BasePrice;
             }
 
             // двигатель
             if (order.SelectedEngine != null)
             {
                 AddResultRow($"Двигатель: {order.SelectedEngine.Name}", order.SelectedEngine.BasePrice);
-                total += order.SelectedEngine.BasePrice;
+                order.TotalCost += order.SelectedEngine.BasePrice;
             }
 
             // цвет
             if (order.Color != null)
             {
                 AddResultRow($"Автомобиль: {order.Color.Name}", order.Color.Price);
-                total += order.Color.Price;
+                order.TotalCost += order.Color.Price;
             }
 
             // доп. опции
             if (order.Option != null)
             {
                 AddResultRow($"Двигатель: {order.Option.Name}", order.Option.Price);
-                total += order.Option.Price;
+                order.TotalCost += order.Option.Price;
             }
 
-            txtTotalCost.Text = $"Итого: {total:N2} руб.";
+            txtTotalCost.Text = $"Итого: {order.TotalCost:N2} руб.";
         }
         private void AddResultRow(string name, decimal price)
         {
-            TextBlock row = new TextBlock { Margin = new Thickness(0, 5, 0, 5), FontSize = 14 };
+            TextBlock row = new TextBlock {};
             row.Text = $"{name} — {price:N2} руб.";
             ResultPanel.Children.Add(row);
         }
