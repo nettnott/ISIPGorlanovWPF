@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIPGorlanovWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Начало работы" Height="450" Width="800">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <ProgressBar x:Name="StepProgress" Grid.Row="0" Minimum="1" Maximum="5" Value="1" Height="20" Margin="20,0,20,0"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Source="ChoiceModelNType.xaml" NavigationUIVisibility="Hidden"/>
+        </Grid>
 </Window>

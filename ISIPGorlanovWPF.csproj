@@ -55,6 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ChoiceColorEtc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChoiceModelNType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreditParametres.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinalCost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +79,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ChoiceColorEtc.xaml.cs">
+      <DependentUpon>ChoiceColorEtc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChoiceModelNType.xaml.cs">
+      <DependentUpon>ChoiceModelNType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreditParametres.xaml.cs">
+      <DependentUpon>CreditParametres.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FinalCost.xaml.cs">
+      <DependentUpon>FinalCost.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MakingAZayavka.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MakingAZayavka.xaml.cs">
+      <DependentUpon>MakingAZayavka.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

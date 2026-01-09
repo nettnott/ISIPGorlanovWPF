@@ -15,13 +15,21 @@ using System.Windows.Shapes;
 
 namespace ISIPGorlanovWPF
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для MakingAZayavka.xaml
+    /// </summary>
+    public partial class MakingAZayavka : Page
     {
-        public int currentStepIndex = 0;
-        public MainWindow()
+        public MakingAZayavka()
         {
             InitializeComponent();
         }
-        
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new CreditParametres());
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.StepProgress.Value = 4;
+        }
     }
 }

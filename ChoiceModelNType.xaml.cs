@@ -15,13 +15,22 @@ using System.Windows.Shapes;
 
 namespace ISIPGorlanovWPF
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для ChoiceModelNType.xaml
+    /// </summary>
+    public partial class ChoiceModelNType : Page
     {
-        public int currentStepIndex = 0;
-        public MainWindow()
+        public ChoiceModelNType()
         {
             InitializeComponent();
         }
         
+    private void GoNext_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ChoiceColorEtc());
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.StepProgress.Value = 2;
+        }
     }
 }
