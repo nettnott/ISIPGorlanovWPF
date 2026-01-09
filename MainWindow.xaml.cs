@@ -27,11 +27,11 @@ namespace ISIPGorlanovWPF
     public class OrderData
     {
         public int id;
-        public string Model { get; set; }
-        public string Engine { get; set; }
-        public string Color { get; set; }
-        public string Options { get; set; }
-        public string CreditDetails { get; set; }
+        public Models Model { get; set; }
+        public Engines Engine { get; set; }
+        public Colors Color { get; set; }
+        public Options Options { get; set; }
+        public Credit CreditDetails { get; set; }
         public string Contacts { get; set; }
     }
 
@@ -85,6 +85,25 @@ namespace ISIPGorlanovWPF
         {
             Name = name;
             Price = price;
+        }
+    }
+
+    public class Credit
+    {
+        public decimal InitialFee; //первоначальный взнос
+        public int TermInMonths; //срок кредита в месяцах
+        public decimal AllCost; //общая стоимость кредита
+        public Credit(decimal initialFee, int termInMonths)
+        {
+            InitialFee = initialFee;
+            TermInMonths = termInMonths;
+        }
+
+        public decimal CalculateMonthlyPayment(decimal totalPrice)
+        {
+            decimal loanAmount = totalPrice - InitialFee;
+            decimal monthlyPayment = loanAmount / TermInMonths;
+            return monthlyPayment;
         }
     }
 
