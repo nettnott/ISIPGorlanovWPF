@@ -26,6 +26,7 @@ namespace ISIPGorlanovWPF
     }
     public class OrderData
     {
+        public int id;
         public string Model { get; set; }
         public string Engine { get; set; }
         public string Color { get; set; }
@@ -36,6 +37,30 @@ namespace ISIPGorlanovWPF
 
     public class Models
     {
+        public int id;
+        public string Name;
+        public string Year;
+        public decimal BasePrice;
 
+        public Models(string name, string year, decimal basePrice)
+        {
+            Name = name;
+            Year = year;
+            BasePrice = basePrice;
+        }
+    }
+    public class Engines
+    {
+        public int id;
+        public string Name;
+        public decimal BasePrice;
+        public int Power;
+
+        public Engines(string name,  decimal basePrice, int power)
+        {
+            Name = name;
+            BasePrice = basePrice;
+            Power = power;
+        }
     }
 }
