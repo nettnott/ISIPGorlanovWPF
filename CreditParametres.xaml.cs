@@ -27,15 +27,14 @@ namespace ISIPGorlanovWPF
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MakingAZayavka());
+            NavigationService.Navigate(new MakingAZayavka());
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.StepProgress.Value = 5;
         }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new FinalCost());
-
+            NavigationService.GoBack();
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.StepProgress.Value = 3;
         }

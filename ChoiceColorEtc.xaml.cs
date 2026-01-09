@@ -38,6 +38,16 @@ namespace ISIPGorlanovWPF
             {
                 listOptions.ItemsSource = mw.OptionsList;
             }
+
+
+            if (mw.CurrentOrder.Color != null)
+            {
+                listColors.SelectedItem = mw.CurrentOrder.Color;
+            }
+            if (mw.CurrentOrder.SelectedEngine != null)
+            {
+                listOptions.SelectedItem = mw.CurrentOrder.Option;
+            }
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +70,7 @@ namespace ISIPGorlanovWPF
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ChoiceModelNType());
+            NavigationService.GoBack();
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.StepProgress.Value = 1;
