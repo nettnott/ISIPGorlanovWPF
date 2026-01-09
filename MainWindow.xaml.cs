@@ -63,4 +63,29 @@ namespace ISIPGorlanovWPF
             Power = power;
         }
     }
+
+    public class Colors
+    {
+        public int id;
+        public string Name;
+        public decimal Price;
+        public Colors( string name, decimal price)
+        {
+            Name = name;
+            Price = price;
+        }
+    }
+
+    public class Options
+    {
+        public int id;
+        public string Name;
+        public decimal Price;
+        public Options(string name, decimal price)
+        {
+            Name = name;
+            Price = price;
+        }
+    }
+
 }
