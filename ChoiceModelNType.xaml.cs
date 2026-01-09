@@ -23,20 +23,34 @@ namespace ISIPGorlanovWPF
         public ChoiceModelNType()
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
+            this.KeepAlive = true;
         }
-        
-    private void GoNext_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var mw = (MainWindow)Application.Current.MainWindow;
+            
+            listModels.ItemsSource = mw.ModelsList;
+            listEngines.ItemsSource = mw.EnginesList;
+        }
+        private void GoNext_Click(object sender, RoutedEventArgs e)
         {
             var mw = (MainWindow)Application.Current.MainWindow;
 
-            // 2. Сохраняем данные (допустим, из TextBox или ComboBox)
-            mw.CurrentOrder.Model = txtModel.Text;
-            mw.CurrentOrder.Engine = comboEngine.Text;
+            // Проверяем выбор и сохраняем объекты в наш "общий файл" CurrentOrder
+            if (listModels.SelectedItem is Models m && listEngines.SelectedItem is Engines en)
+            {
+                mw.CurrentOrder.SelectedModel = m;
+                mw.CurrentOrder.SelectedEngine = en;
 
-            this.NavigationService.Navigate(new ChoiceColorEtc());
-
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.StepProgress.Value = 2;
+                this.NavigationService.Navigate(new ChoiceColorEtc());
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.StepProgress.Value = 2;
+            }
+            else
+            {
+                MessageBox.Show("Выберите значения из списков!");
+            }
         }
     }
 }

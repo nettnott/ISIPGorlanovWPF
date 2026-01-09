@@ -8,8 +8,44 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChoiceModelNType">
 
-    <Grid>
-        <TextBlock Text="Шаг 1: Выберите модель авто и ее тип" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
-        <Button Content="Далее" Click="GoNext_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="100"/>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Шаг 1: Выберите модель авто и ее тип" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
+
+        <TextBlock Grid.Row="1" Text="Выберите модель:" Margin="5,0"/>
+        <ListBox x:Name="listModels" Grid.Row="2" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                    <Run Text="{Binding Name}" FontWeight="Bold"/>
+                    <Run Text=" | Год: "/> <Run Text="{Binding Year}"/>
+                    <Run Text=" | Цена: "/> <Run Text="{Binding BasePrice}"/> <Run Text=" руб."/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <TextBlock Grid.Row="3" Text="Выберите двигатель:" Margin="5,0"/>
+        <ListBox x:Name="listEngines" Grid.Row="4" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                    <Run Text="{Binding Name}" FontWeight="Bold"/>
+                    <Run Text=" | Мощность: "/> <Run Text="{Binding Power}"/> <Run Text=" л.с."/>
+                    <Run Text=" | Цена: "/> <Run Text="{Binding BasePrice}"/> <Run Text=" руб."/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Grid.Row="5" Content="Далее" Click="GoNext_Click" HorizontalAlignment="Right" Margin="10" Width="100" Height="30"/>
     </Grid>
 </Page>

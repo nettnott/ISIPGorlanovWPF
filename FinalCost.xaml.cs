@@ -23,6 +23,7 @@ namespace ISIPGorlanovWPF
         public FinalCost()
         {
             InitializeComponent();
+            this.KeepAlive = true;
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {

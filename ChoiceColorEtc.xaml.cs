@@ -23,6 +23,15 @@ namespace ISIPGorlanovWPF
         public ChoiceColorEtc()
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
+            this.KeepAlive = true;
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var mw = (MainWindow)Application.Current.MainWindow;
+
+            listColors.ItemsSource = mw.ColorsList;
+            listOptions.ItemsSource = mw.OptionsList;
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {

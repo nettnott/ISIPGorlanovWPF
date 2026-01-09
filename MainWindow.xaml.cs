@@ -19,16 +19,30 @@ namespace ISIPGorlanovWPF
     {
         public int currentStepIndex = 0;
         public OrderData CurrentOrder { get; set; } = new OrderData();
+        public List<Models> ModelsList { get; set; } = new List<Models> ();
+        public List<Engines> EnginesList { get; set; } = new List<Engines> ();
         public MainWindow()
         {
             InitializeComponent();
+
+            //данные для списков моделей и двигателей
+            ModelsList.Add(new Models("Lada Vesta", "2023", 1500000m));
+            ModelsList.Add(new Models("Lada Granta", "2022", 800000m));
+            ModelsList.Add(new Models("UAZ Patriot", "2023", 1800000m));
+            ModelsList.Add(new Models("Molniya Macquinn", "200w", 1800000m));
+
+            EnginesList.Add(new Engines("1.6 MPI", 0m, 106));
+            EnginesList.Add(new Engines("1.8 Turbo", 200000m, 145));
+            EnginesList.Add(new Engines("2.0 Diesel", 350000m, 150));
+
+            MainFrame.Navigate(new ChoiceModelNType());
         }
     }
     public class OrderData
     {
         public int id;
-        public Models Model { get; set; }
-        public Engines Engine { get; set; }
+        public Models SelectedModel { get; set; }
+        public Engines SelectedEngine { get; set; }
         public Colors Color { get; set; }
         public Options Options { get; set; }
         public Credit CreditDetails { get; set; }
@@ -37,55 +51,38 @@ namespace ISIPGorlanovWPF
 
     public class Models
     {
-        public int id;
-        public string Name;
-        public string Year;
-        public decimal BasePrice;
+        public string Name { get; set; }
+        public string Year { get; set; }
+        public decimal BasePrice { get; set; }
 
-        public Models(string name, string year, decimal basePrice)
-        {
-            Name = name;
-            Year = year;
-            BasePrice = basePrice;
-        }
+        public Models(string name, string year, decimal price)
+        { Name = name; Year = year; BasePrice = price; }
     }
+
     public class Engines
     {
-        public int id;
-        public string Name;
-        public decimal BasePrice;
-        public int Power;
+        public string Name { get; set; }
+        public decimal BasePrice { get; set; }
+        public int Power { get; set; }
 
-        public Engines(string name,  decimal basePrice, int power)
-        {
-            Name = name;
-            BasePrice = basePrice;
-            Power = power;
-        }
+        public Engines(string name, decimal price, int power)
+        { Name = name; BasePrice = price; Power = power; }
     }
 
     public class Colors
     {
-        public int id;
-        public string Name;
-        public decimal Price;
+        public string Name { get; set; }
+        public decimal Price { get; set; }
         public Colors( string name, decimal price)
-        {
-            Name = name;
-            Price = price;
-        }
+        { Name = name; Price = price; }
     }
 
     public class Options
     {
-        public int id;
-        public string Name;
-        public decimal Price;
+        public string Name { get; set; }
+        public decimal Price { get; set; }
         public Options(string name, decimal price)
-        {
-            Name = name;
-            Price = price;
-        }
+        { Name = name; Price = price; }
     }
 
     public class Credit
@@ -109,11 +106,7 @@ namespace ISIPGorlanovWPF
             MonthlyStavka = YearStavka/100/12; // расчет ежемесячной ставки
             MonthlyPayment = TotalPayment*(MonthlyStavka * Convert.ToDecimal(Math.Pow(Convert.ToDouble(1+MonthlyStavka), Convert.ToDouble(TermInMonths)))/ Convert.ToDecimal(Math.Pow(Convert.ToDouble(1 + MonthlyStavka), Convert.ToDouble(TermInMonths - 1))));
         }
-
-        public void CalculateCreditDetails()
-        {
-            
-        }
+        //мб добаить вывод данных кредита в строку или сделать на странице кредита
     }
 
 }
