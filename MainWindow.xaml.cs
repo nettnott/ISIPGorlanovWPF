@@ -21,6 +21,8 @@ namespace ISIPGorlanovWPF
         public OrderData CurrentOrder { get; set; } = new OrderData();
         public List<Models> ModelsList { get; set; } = new List<Models> ();
         public List<Engines> EnginesList { get; set; } = new List<Engines> ();
+        public List<Colors> ColorsList { get; set; } = new List<Colors>();
+        public List<Options> OptionsList { get; set; } = new List<Options>();
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,18 @@ namespace ISIPGorlanovWPF
             EnginesList.Add(new Engines("1.8 Turbo", 200000m, 145));
             EnginesList.Add(new Engines("2.0 Diesel", 350000m, 150));
 
+            //данные для списков моделей и двигателей
+            ColorsList.Add(new Colors("Белый", 0m));
+            ColorsList.Add(new Colors("Черный", 15000m));
+            ColorsList.Add(new Colors("Красный", 20000m));
+            ColorsList.Add(new Colors("Синий", 25000m));
+
+            OptionsList.Add(new Options("Климат-контроль", 50000m));
+            OptionsList.Add(new Options("Мультимедиа система", 40000m));
+            OptionsList.Add(new Options("Парктроник", 15000m));
+            OptionsList.Add(new Options("Тонировочка", 150000000m));
+            OptionsList.Add(new Options("Бумбокс", 5000m));
+
             MainFrame.Navigate(new ChoiceModelNType());
         }
     }
@@ -44,7 +58,7 @@ namespace ISIPGorlanovWPF
         public Models SelectedModel { get; set; }
         public Engines SelectedEngine { get; set; }
         public Colors Color { get; set; }
-        public Options Options { get; set; }
+        public Options Option { get; set; }
         public Credit CreditDetails { get; set; }
         public string Contacts { get; set; }
     }

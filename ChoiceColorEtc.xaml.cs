@@ -30,20 +30,37 @@ namespace ISIPGorlanovWPF
         {
             var mw = (MainWindow)Application.Current.MainWindow;
 
-            listColors.ItemsSource = mw.ColorsList;
-            listOptions.ItemsSource = mw.OptionsList;
+            if (listColors.ItemsSource == null)
+            {
+                listColors.ItemsSource = mw.ColorsList;
+            }
+            if (listOptions.ItemsSource == null)
+            {
+                listOptions.ItemsSource = mw.OptionsList;
+            }
         }
         private void GoNext_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new FinalCost());
+            var mw = (MainWindow)Application.Current.MainWindow;
+            if (listColors.SelectedItem is Colors c && listOptions.SelectedItem is Options o)
+            {
+                mw.CurrentOrder.Color = c;
+                mw.CurrentOrder.Option = o;
 
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.StepProgress.Value = 3;
+                NavigationService.Navigate(new FinalCost());
+
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.StepProgress.Value = 3;
+            }
+            else
+            {
+                MessageBox.Show("Выберите значения из списков!");
+            }
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ChoiceModelNType());
+            NavigationService.Navigate(new ChoiceModelNType());
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.StepProgress.Value = 1;
