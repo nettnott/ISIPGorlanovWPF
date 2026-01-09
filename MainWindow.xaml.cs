@@ -92,18 +92,27 @@ namespace ISIPGorlanovWPF
     {
         public decimal InitialFee; //первоначальный взнос
         public int TermInMonths; //срок кредита в месяцах
-        public decimal AllCost; //общая стоимость кредита
-        public Credit(decimal initialFee, int termInMonths)
+        public decimal CarCost; //общая стоимость машины
+        public decimal MonthlyPayment; //ежемесячный платеж
+        public decimal TotalPayment; //общая сумма выплат по кредиту
+        public decimal MonthlyStavka; //ежемесячная ставка
+        public decimal YearStavka; //годовая ставка по кредиту
+
+        public Credit(decimal initialFee, int termInMonths, decimal carCost, decimal yearStavka)
         {
             InitialFee = initialFee;
             TermInMonths = termInMonths;
+            CarCost = carCost;
+            YearStavka = yearStavka;
+
+            TotalPayment = CarCost - InitialFee; // расчет общей суммы выплат по кредиту
+            MonthlyStavka = YearStavka/100/12; // расчет ежемесячной ставки
+            MonthlyPayment = TotalPayment*(MonthlyStavka * Convert.ToDecimal(Math.Pow(Convert.ToDouble(1+MonthlyStavka), Convert.ToDouble(TermInMonths)))/ Convert.ToDecimal(Math.Pow(Convert.ToDouble(1 + MonthlyStavka), Convert.ToDouble(TermInMonths - 1))));
         }
 
-        public decimal CalculateMonthlyPayment(decimal totalPrice)
+        public void CalculateCreditDetails()
         {
-            decimal loanAmount = totalPrice - InitialFee;
-            decimal monthlyPayment = loanAmount / TermInMonths;
-            return monthlyPayment;
+            
         }
     }
 
