@@ -24,5 +24,10 @@ namespace ISIPGorlanovWPF.pages
         {
             InitializeComponent();
         }
+
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoForward();
+        }
     }
 }

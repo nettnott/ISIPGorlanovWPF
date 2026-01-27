@@ -11,6 +11,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="Item01SP">
+            <Image Source="/imgs/"
+        </StackPanel>
+        <Button x:Name="NextBtn" Click="NextBtn_Click"  Content="Exat` cherez fa" Grid.Row="3" Grid.Column="3" Height="60" Width="200" FontSize="18" FontFamily="Ink Free"/>
     </Grid>
 </Page>
