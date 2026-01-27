@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core.cs" />
     <Compile Include="DB13.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +65,15 @@
     </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>DB13.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cart.xaml.cs">
+      <DependentUpon>cart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\confirm.xaml.cs">
+      <DependentUpon>confirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\products.xaml.cs">
+      <DependentUpon>products.xaml</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>DB13.tt</DependentUpon>
@@ -96,6 +106,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="pages\cart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\confirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\products.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
