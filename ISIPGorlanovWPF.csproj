@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB13.tt</DependentUpon>
     </Compile>
+    <Compile Include="Lists.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>DB13.tt</DependentUpon>
     </Compile>

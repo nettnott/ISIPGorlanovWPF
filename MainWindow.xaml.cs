@@ -20,9 +20,6 @@ namespace ISIPGorlanovWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static List<Product> productList = Core.Context.Product.ToList();
-        public static List<Order> orderList = Core.Context.Order.ToList();
-        public static List<ProductOrder> cartList = Core.Context.ProductOrder.ToList();
         public MainWindow()
         {
             InitializeComponent();

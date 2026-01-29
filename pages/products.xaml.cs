@@ -23,11 +23,21 @@ namespace ISIPGorlanovWPF.pages
         public products()
         {
             InitializeComponent();
-            ProductsList.ItemsSource = MainWindow.productList;
+            ProductsList.ItemsSource = Lists.productList;
         }
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.cartList.Add((ProductOrder)ProductsList.SelectedItem);
+            var button = sender as Button;
+            var product = button.DataContext as Product;
+
+            if (product != null)
+            {
+                if (Lists.cart.FirstOrDefault)
+                {
+
+                }
+                Lists.cart.Add(product);
+            }
         }
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {

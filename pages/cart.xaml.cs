@@ -23,6 +23,7 @@ namespace ISIPGorlanovWPF.pages
         public cart()
         {
             InitializeComponent();
+            CartList.ItemsSource = Lists.cart;
         }
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
