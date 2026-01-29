@@ -23,11 +23,12 @@ namespace ISIPGorlanovWPF.pages
         public products()
         {
             InitializeComponent();
+            ProductsList.ItemsSource = MainWindow.productList;
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoForward();
+            NavigationService.Navigate(new cart());
         }
     }
 }

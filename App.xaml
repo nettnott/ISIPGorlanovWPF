@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:ISIPGorlanovWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style TargetType="Image">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Height" Value="300" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

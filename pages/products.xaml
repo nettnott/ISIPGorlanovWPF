@@ -11,20 +11,29 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="Item01SP">
-            <Image Source="/imgs/"
-        </StackPanel>
-        <Button x:Name="NextBtn" Click="NextBtn_Click"  Content="Exat` cherez fa" Grid.Row="3" Grid.Column="3" Height="60" Width="200" FontSize="18" FontFamily="Ink Free"/>
+        <ListBox x:Name="ProductsList" Grid.Row="0" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10" Width="450">
+                        <Image Source="{Binding ImgSource}" Stretch="Uniform" Margin="5"/>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Cost, StringFormat='{}{0} руб.'}" Foreground="Gray" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="NextBtn" Click="NextBtn_Click"  Content="Exat` cherez fa" Grid.Row="1" Grid.Column="1" Height="60" Width="200" FontSize="18" FontFamily="Ink Free"/>
     </Grid>
 </Page>
