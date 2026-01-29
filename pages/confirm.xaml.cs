@@ -27,7 +27,7 @@ namespace ISIPGorlanovWPF.pages
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(new confirm());
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
