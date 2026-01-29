@@ -30,6 +30,7 @@
                         <Image Source="{Binding ImgSource}" Stretch="Uniform" Margin="5"/>
                         <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding Cost, StringFormat='{}{0} руб.'}" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <Button x:Name="AddBTN" Content="add to cart" Width="200" Height="40" Margin="5" HorizontalAlignment="Center" Click="AddBTN_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

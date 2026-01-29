@@ -25,7 +25,10 @@ namespace ISIPGorlanovWPF.pages
             InitializeComponent();
             ProductsList.ItemsSource = MainWindow.productList;
         }
-
+        private void AddBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.cartList.Add((ProductOrder)ProductsList.SelectedItem);
+        }
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new cart());
