@@ -32,10 +32,10 @@ namespace ISIPGorlanovWPF.pages
 
             if (product != null)
             {
-                if (Lists.cart.FirstOrDefault)
+                /*if (Lists.cart.Contains(product))
                 {
 
-                }
+                }*/
                 Lists.cart.Add(product);
             }
         }
