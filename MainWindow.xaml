@@ -12,7 +12,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="PepeShneineCinema" HorizontalAlignment="Center" Margin="0, 5" FontSize="22" FontWeight="UltraLight" FontFamily="Ink Free"/>
+            <TextBlock Grid.Row="0" Text="PepeShneineCinema" HorizontalAlignment="Center" Margin="0, 5" FontSize="22" Foreground="DeepPink"  FontWeight="Light" FontFamily="Ink Free"/>
             <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Source="Pages/MainPage.xaml"/>
         </Grid>
     </Grid>
