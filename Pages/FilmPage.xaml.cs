@@ -23,6 +23,7 @@ namespace ISIPGorlanovWPF.Pages
         public FilmPage()
         {
             InitializeComponent();
+            FilmInfo.ItemsSource=
         }
     }
 }

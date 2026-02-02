@@ -40,7 +40,7 @@
         </ListBox>
         <StackPanel x:Name="SideStP" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top" Orientation="Vertical">
             <TextBlock Text="Поиск: " Width="300" Height="40" Margin="5, 10" FontFamily="Ink Free" FontSize="30" FontWeight="Bold" Foreground="DeepPink" />
-            <TextBox x:Name="SearchTB" Width="300" Height="40" Margin="5"/>
+            <TextBox x:Name="SearchTB" TextChanged="SearchTB_TextChanged" Width="300" Height="35" Margin="5" Padding="5" FontSize="18"/>
             <TextBlock Text="Сортировка: " Width="300" Height="40" Margin="5, 10" FontFamily="Ink Free" FontSize="30" FontWeight="Bold" Foreground="DeepPink" />
             <StackPanel x:Name="SortSP"  Width="300" Margin="10">
                 <RadioButton x:Name="ByNameRB" GroupName="Type" Content="По названию" FontSize="18"/>
@@ -53,7 +53,9 @@
                     <Button x:Name="ResetBTN" Click="ResetBTN_Click" HorizontalAlignment="Right" Content="Сбросить" Width="100" Height="20" Margin="10" FontWeight="Heavy" FontFamily="Ink Free" Background="LightPink"/>
                 </StackPanel>
             </StackPanel>
-            <Button x:Name="LKBTN" Click="LKBTN_Click" HorizontalAlignment="Center" Content="Перейти в личный кабинет" Width="300" Height="35" Margin="15" FontWeight="Heavy" FontFamily="Ink Free" Background="DeepPink" FontSize="20"/>
+            <Rectangle Fill="LightPink" Width="280" Height="1" Margin="10"/>
+            <Button x:Name="LogInBTN" Click="LogInBTN_Click" HorizontalAlignment="Center" Content="Войти в аккаунт" Width="250" Height="35" Margin="15" FontWeight="Heavy" FontFamily="Ink Free" Background="DeepPink" FontSize="20"/>
+            <Button x:Name="CreateAccBTN" Click="CreateAccBTN_Click" HorizontalAlignment="Center" Content="Создать аккаунт" Width="250" Height="35" Margin="15" FontWeight="Heavy" FontFamily="Ink Free" Background="HotPink" FontSize="20"/>
         </StackPanel>
     </Grid>
 </Page>

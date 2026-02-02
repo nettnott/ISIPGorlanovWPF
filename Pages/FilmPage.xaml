@@ -9,6 +9,15 @@
       Title="FilmPage">
 
     <Grid>
-        
+        <StackPanel x:Name="FilmInfo" Margin="20" Orientation="Horizontal" Width="500">
+            <Image Source="{Binding Cover}" Stretch="Uniform" Margin="5" HorizontalAlignment="Left" Width="200"/>
+            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Name}" FontFamily="Ink Free" FontSize="20" TextWrapping="Wrap"  FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding Rate, StringFormat='Рейтинг: {0}'}" FontWeight="Medium" Foreground="DeepPink" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding StartOfRental, StringFormat='Начало показа: {0}'}" FontWeight="Light" Foreground="Black" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding AgeRateID.Name, StringFormat='Возрастной рейтинг: {0}'}" FontWeight="Medium" Foreground="HotPink" HorizontalAlignment="Center"/>
+                <Button x:Name="InfoBTN" Content="more info" Width="100" Height="20" Margin="5" Click="InfoBTN_Click" HorizontalAlignment="Center" FontWeight="Heavy" FontFamily="Ink Free" Background="LightPink"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

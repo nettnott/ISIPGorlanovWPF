@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ISIPGorlanovWPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorizePage.xaml
+    /// Логика взаимодействия для CreateAccPage.xaml
     /// </summary>
-    public partial class AuthorizePage : Page
+    public partial class CreateAccPage : Page
     {
-        public AuthorizePage()
+        public CreateAccPage()
         {
             InitializeComponent();
         }

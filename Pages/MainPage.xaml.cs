@@ -21,11 +21,10 @@ namespace ISIPGorlanovWPF.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage(string search)
+        public MainPage()//Окак а зачем а господи это вс сделало
         {
             InitializeComponent();
             FilmsList.ItemsSource = Lists.filmsList;
-            SearchFilm(SearchTB.Text);
         }
 
         private void InfoBTN_Click(object sender, RoutedEventArgs e)
@@ -79,21 +78,32 @@ namespace ISIPGorlanovWPF.Pages
             }
         }
 
-        private void LKBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new UsersPage());
-        }
-
         private void ResetBTN_Click(object sender, RoutedEventArgs e)
         {
             FilmsList.Items.SortDescriptions.Clear();
         }
-        private void SearchFilm(string search)
+
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-            FilmsList.ItemsSource = null;
-            FilmsList.ItemsSource = Lists.filmsList.Where(p => p.Name.Contains(search)).ToList();
+            if (string.IsNullOrWhiteSpace(SearchTB.Text))
+            {
+                FilmsList.ItemsSource = Lists.filmsList;
+            }
+            else
+            {
+                FilmsList.ItemsSource = Lists.filmsList.Where(p => p.Name.ToLower().Contains(SearchTB.Text.ToLower())).ToList();
+            }
         }
 
+        private void LogInBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LogInPage());
+        }
+
+        private void CreateAccBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreateAccPage());
+        }
     }
 }
 
