@@ -26,22 +26,77 @@ namespace ISIPGorlanovWPF.Pages
         {
             InitializeComponent();
             PartsList.ItemsSource = Lists.baseparts;
-            SelectedPartsList.ItemsSource = "";
+            ManufacturerCombo.ItemsSource = Lists.manufacturers;
+            SelectedPartsList.ItemsSource = null;
         }
 
         private void SaveBuild_BTN_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(BuildName.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите название сборки!", "Ошибка");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(AuthorName.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите имя автора!", "Ошибка");
+                return;
+            }
+            if (selectedParts.Count == 0)
+            {
+                MessageBox.Show("Нельзя сохранить пустую сборку!", "Ошибка");
+                return;
+            }
 
+            assembly_ newAssembly = new assembly_()
+            {
+                name = BuildName.Text,
+                author = AuthorName.Text
+            };
+
+            Core.Context.assembly_.Add(newAssembly);
+            Core.Context.SaveChanges();
+
+            foreach (var part in selectedParts)
+            {
+                partassembly_ link = new partassembly_()
+                {
+                    assemblyid = newAssembly.id,
+                    partid = part.id
+                };
+                Core.Context.partassembly_.Add(link);
+            }
+            Core.Context.SaveChanges();
+
+            MessageBox.Show("Сборка успешно сохранена в базу!", "Сохранение");
+
+            BuildName.Clear();
+            AuthorName.Clear();
+            selectedParts.Clear();
+            SelectedPartsList.ItemsSource = null;
+            totalPrice = 0;
+            PriceLabel.Text = "0 руб.";
         }
-        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void FilterChanged(object sender, EventArgs e)
         {
             string searchText = SearchBox.Text.ToLower();
+            var selectedMan = ManufacturerCombo.SelectedItem as manufacturer_;
 
-            var filteredList = Lists.baseparts
-                .Where(p => p.name.ToLower().Contains(searchText))
-                .ToList();
+            var filtered = Lists.baseparts.Where(p => {
+                bool matchesText = p.name.ToLower().Contains(searchText);
+                bool matchesManufacturer = selectedMan == null || p.manufacturerid == selectedMan.id;
+                return matchesText && matchesManufacturer;
+            }).ToList();
 
-            PartsList.ItemsSource = filteredList;
+            PartsList.ItemsSource = filtered;
+        }
+
+        private void ResetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Text = "";
+            ManufacturerCombo.SelectedItem = null;
+            PartsList.ItemsSource = Lists.baseparts;
         }
 
         private void OpenHistory_BTN_Click(object sender, RoutedEventArgs e)
@@ -108,8 +163,6 @@ namespace ISIPGorlanovWPF.Pages
                     return false;
                 }
             }
-
-            // 2. Проверка Типа памяти (ОЗУ + Мать)
             if (ram != null && motherboard != null)
             {
                 var ramInfo = Lists.rams.FirstOrDefault(r => r.id == ram.id);
@@ -121,8 +174,6 @@ namespace ISIPGorlanovWPF.Pages
                     return false;
                 }
             }
-
-            // 3. Проверка Блока питания (БП + Видеокарта)
             if (gpu != null && psu != null)
             {
                 var gpuInfo = Lists.gpus.FirstOrDefault(g => g.id == gpu.id);
@@ -134,23 +185,17 @@ namespace ISIPGorlanovWPF.Pages
                     return false;
                 }
             }
-
-            // Проверка: Материнская плата + Корпус
             if (motherboard != null && pcCase != null)
             {
-                // 1. Получаем ID форм-фактора выбранной материнки
                 var mbInfo = Lists.motherboards.FirstOrDefault(m => m.id == motherboard.id);
                 int requiredFactor = mbInfo.formfactorid;
 
-                // 2. Ищем в таблице связей, поддерживает ли этот корпус такой ID
-                // Предполагаем, что таблица в EF называется caseformfactor_
                 var compatibility = Core.Context.boardformfactorcase_
                     .FirstOrDefault(cf => cf.caseid == pcCase.id && cf.formfactorid == requiredFactor);
 
                 if (compatibility == null)
                 {
-                    MessageBox.Show("Данный корпус не поддерживает размер этой материнской платы!",
-                                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Данный корпус не поддерживает размер этой материнской платы!", "Ошибка совместимости", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
