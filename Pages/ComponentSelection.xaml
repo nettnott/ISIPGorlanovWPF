@@ -38,6 +38,7 @@
                             <StackPanel>
                                 <Image Source="{Binding image}" Height="100" Stretch="Uniform"/>
                                 <TextBlock Text="{Binding name}" TextWrapping="Wrap" Height="40" FontWeight="Bold" Margin="0,5"/>
+                                <TextBlock Text="{Binding parttypeid.parttype.name}" TextWrapping="Wrap" Height="40" Margin="0,5"/>
                                 <TextBlock Text="{Binding price, StringFormat={}{0:N0} руб.}" Foreground="DimGray"/>
                                 <Button x:Name="AddPart_BTN" Content="Добавить" Tag="{Binding id}" Click="AddPart_Click"/>
                             </StackPanel>

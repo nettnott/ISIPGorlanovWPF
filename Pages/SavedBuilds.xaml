@@ -20,13 +20,12 @@
 
         <TextBlock Grid.Row="0" Text="Все сохраненные сборки" FontSize="18" Margin="0,0,0,10"/>
 
-        <ListBox Grid.Row="1" Grid.Column="0" x:Name="HistoryGrid">
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="HistoryListBox" SelectionChanged="HistoryListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,0,0,10">
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14"/>
-                        <TextBlock Text="{Binding Author}" Foreground="Gray" Margin="0,0,0,5"/>
-                        <TextBlock Text="{Binding Price}" Foreground="HotPink"/>
+                        <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Text="{Binding author}" Foreground="Gray" Margin="0,0,0,5"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -35,9 +34,10 @@
         <ListBox Grid.Row="1" Grid.Column="1" x:Name="BuildGrid">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,0,0,10">
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14"/>
-                        <TextBlock Text="{Binding Price}" Foreground="HotPink"/>
+                    <StackPanel Margin="10,5">
+                        <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Text="{Binding price, StringFormat={}{0:N0} руб.}" Foreground="HotPink"/>
+                        <TextBlock Text="{Binding parttype_.name}" FontSize="11" Foreground="Gray"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -23,6 +23,21 @@ namespace ISIPGorlanovWPF.Pages
         public SavedBuilds()
         {
             InitializeComponent();
+            HistoryListBox.ItemsSource = Lists.assemblies;
+        }
+        private void HistoryListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedAssembly = HistoryListBox.SelectedItem as assembly_;
+
+            if (selectedAssembly != null)
+            {
+                var partsInBuild = Core.Context.partassembly_
+                    .Where(pa => pa.assemblyid == selectedAssembly.id)
+                    .Select(pa => pa.basepart_)
+                    .ToList();
+
+                BuildGrid.ItemsSource = partsInBuild;
+            }
         }
     }
 }
