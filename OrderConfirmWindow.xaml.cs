@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ISIPGorlanovWPF
 {
@@ -27,32 +17,52 @@ namespace ISIPGorlanovWPF
 
         private void BtnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            var order = new Order
+            if (App.Cart.Count == 0)
             {
-                UserID = App.CurrentUserId,
-                RecordDate = DateTime.Now,
-                Comm = "Заказ из приложения",
-                PaymentMethod = (cmbPayment.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Наличные",
-                OrderStatus = "Новый"
-            };
+                MessageBox.Show("Корзина пуста!");
+                return;
+            }
 
-            Core.Context.Order.Add(order);
+            if (dpDate.SelectedDate == null)
+            {
+                MessageBox.Show("Выберите дату получения товара!");
+                return;
+            }
+            Order newOrder;
+
+            MessageBox.Show(App.CurrentUserId.ToString());
+            newOrder = new Order();
+            newOrder.UserID = App.CurrentUserId;
+            newOrder.RecordDate = DateTime.Now;
+            newOrder.Comm = "Заказ из приложения";
+            newOrder.PaymentMethod = (cmbPayment.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Наличные";
+            newOrder.OrderStatus = "Новый";
+            
+            Core.Context.Order.Add(newOrder);
             Core.Context.SaveChanges();
+
 
             foreach (var item in App.Cart)
             {
-                Core.Context.OrderProduct.Add(new OrderProduct { OrderID = order.ID, ProductID = item.ProductID });
+                MessageBox.Show($"{item.ProductID} || {newOrder.ID}");
+                Core.Context.OrderProduct.Add(new OrderProduct
+                {
+                    OrderID = newOrder.ID,
+                    ProductID = item.ProductID
+                });
             }
+
             Core.Context.SaveChanges();
 
             Lists.ordersBDL = Core.Context.Order.ToList();
             App.Cart.Clear();
 
-            MessageBox.Show("Заказ оформлен!");
+            MessageBox.Show($"Заказ №{newOrder.ID} успешно оформлен!", "Успех");
+            this.DialogResult = true;
             Close();
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e) 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

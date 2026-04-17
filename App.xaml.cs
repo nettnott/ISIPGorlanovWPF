@@ -22,6 +22,7 @@ namespace ISIPGorlanovWPF
 
     public class CartItem
     {
+        //public Product product { get; set; }
         public int ProductID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }

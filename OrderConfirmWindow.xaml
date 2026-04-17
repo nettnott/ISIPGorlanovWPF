@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="OrderConfirmWindow" Height="450" Width="800">
     <Grid Margin="30">
-        <StackPanel Width="800" VerticalAlignment="Center">
+        <StackPanel VerticalAlignment="Center">
             <TextBlock Text="Дата получения"/>
             <DatePicker x:Name="dpDate" Margin="0,5,0,15"/>
             <TextBlock Text="Способ оплаты"/>
