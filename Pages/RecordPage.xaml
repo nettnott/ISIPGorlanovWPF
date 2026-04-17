@@ -1,0 +1,18 @@
+﻿<Page x:Class="ISIPGorlanovWPF.Pages.RecordPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIPGorlanovWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="RecordPage">
+    <Grid Margin="20">
+        <StackPanel>
+            <DatePicker x:Name="dpFilter" Width="200"/>
+            <Button Content="Фильтровать по дате" Click="BtnFilter_Click" Width="180" Margin="0,10"/>
+            <DataGrid x:Name="dgRecords" Height="320" AutoGenerateColumns="True" MouseDoubleClick="dgRecords_MouseDoubleClick"/>
+            <Button Content="Назад" Width="140" Click="BtnBack_Click" Margin="0,15,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>

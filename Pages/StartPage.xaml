@@ -1,0 +1,25 @@
+﻿<Page x:Class="ISIPGorlanovWPF.Pages.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIPGorlanovWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="StartPage">
+
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Выберите тип услуги" FontSize="18"/>
+            <ComboBox x:Name="cmbServiceType" Height="35" SelectionChanged="cmbServiceType_SelectionChanged"/>
+
+            <TextBlock Text="Мастера" FontSize="18" Margin="0,20,0,5"/>
+            <ListBox x:Name="lbMasters" Height="140" SelectionChanged="lbMasters_SelectionChanged"/>
+
+            <TextBlock Text="Доступные записи" FontSize="18" Margin="0,20,0,5"/>
+            <DataGrid x:Name="dgAppointments" Height="220" IsReadOnly="True"/>
+
+            <Button Content="Записаться на выбранную запись" Height="45" Click="BtnMakeAppointment_Click" Margin="0,15,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>

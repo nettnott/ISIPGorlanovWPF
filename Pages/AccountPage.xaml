@@ -1,0 +1,22 @@
+﻿<Page x:Class="ISIPGorlanovWPF.Pages.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIPGorlanovWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AccountPage">
+
+    <Grid Margin="20">
+        <TabControl>
+            <TabItem Header="Мои записи">
+                <DataGrid x:Name="dgAppointments" AutoGenerateColumns="True" IsReadOnly="True"/>
+            </TabItem>
+            <TabItem Header="Мои заказы">
+                <DataGrid x:Name="dgOrders" AutoGenerateColumns="True" IsReadOnly="True"/>
+            </TabItem>
+        </TabControl>
+        <Button Content="Назад" Width="140" Click="BtnBack_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+    </Grid>
+</Page>
